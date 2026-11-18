@@ -109,3 +109,37 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+
+html,
+body,
+#root {
+  min-height: 100%;
+  margin: 0;
+}
+
+.app-layout {
+  min-height: 100vh;
+}
+
+.sidebar {
+  padding: 2rem 1.25rem;
+  background-color: #243b35;
+}
+
+.sidebar .menu-label {
+  color: #b5c9c0;
+}
+
+.sidebar .menu-list a {
+  color: white;
+}
+
+.sidebar .menu-list a:hover,
+.sidebar .menu-list a.is-active {
+  color: #243b35;
+  background-color: #d5eee2;
+}
+
+.main-content {
+  background-color: #f7f8f6;
+}
