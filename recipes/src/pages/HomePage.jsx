@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getRecipes } from "../api/recipeService";
+import RecipeCard from "../components/RecipeCard";
 
 export default function Home() {
   const [recipes, setRecipes] = useState([]);
@@ -35,32 +36,10 @@ export default function Home() {
       {!loading && !error && recipes.length > 0 && (
         <div className="columns is-multiline">
           {recipes.map((recipe) => (
-            <div className="column is-12-mobile is-6-tablet is-4-desktop" key={recipe._id}>
-              <article className="card">
-                <div className="card-content">
-                  <h2 className="title is-5">{recipe.name}</h2>
-
-                  <p className="has-text-weight-semibold mb-2">
-                    Ingrédients
-                  </p>
-                  <ul>
-                    {recipe.ingredients?.map((ingredient, index) => (
-                      <li key={`${ingredient}-${index}`}>• {ingredient}</li>
-                    ))}
-                  </ul>
-
-                  <p className="has-text-weight-semibold mt-4 mb-2">
-                    Préparation
-                  </p>
-                  <ol>
-                    {recipe.steps?.map((step, index) => (
-                      <li key={`${step}-${index}`}>
-                        {index + 1}. {step}
-                      </li>
-                    ))}
-                  </ol>
-                </div>
-              </article>
+            <div className="column is-12-mobile is-6-tablet is-4-desktop" key={recipe.id}>
+              {/* <NavLink to="{ @`/${recipe.}`}" end> */}
+                <RecipeCard recipe={recipe} />
+              {/* </NavLink> */}
             </div>
           ))}
         </div>
