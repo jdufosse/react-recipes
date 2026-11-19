@@ -1,31 +1,33 @@
 import { useEffect, useState } from "react";
+import { useParams, Link } from "react-router-dom";
 import { getRecipeById } from "../api/recipeService";
 
 export default function RecipePage() {
+  const { id } = useParams();
   const [recipe, setRecipe] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
   useEffect(() => {
-    getRecipeById()
+    getRecipeById(id)
       .then(setRecipe)
       .catch((err) => setError(err.message))
       .finally(() => setLoading(false));
-  }, []);
+  }, [id]);
 
   return (
-    <div className="column is-12-mobile is-6-tablet is-4-desktop" key={recipe._id}>
+    <div key={recipe._id}>
       {loading && <p>Chargement des recettes…</p>}
 
       {error && (
         <div className="notification is-danger is-light">{error}</div>
       )}
-      
-      <article className="card">
-        <div className="card-content">
-          <h1 className="title is-5">{recipe.name}</h1>
 
-          <p className="has-text-weight-semibold mb-2">
+      {!loading && !error && recipe && (
+        <div>
+          <h1 className="title is-1">{recipe.name}</h1>
+
+          <p className="title is-3 mb-2">
             Ingrédients
           </p>
           <ul>
@@ -34,7 +36,7 @@ export default function RecipePage() {
             ))}
           </ul>
 
-          <p className="has-text-weight-semibold mt-4 mb-2">
+          <p className="title is-3 mt-4 mb-2">
             Préparation
           </p>
           <ol>
@@ -44,8 +46,14 @@ export default function RecipePage() {
               </li>
             ))}
           </ol>
+
+          <Link to={`/recipe/edit/${recipe._id}`} className="is-block">
+            <button className="button is-primary" type="submit">
+              Modifier la recette
+            </button>
+          </Link>
         </div>
-      </article>
+      )}
     </div>
   )
 }

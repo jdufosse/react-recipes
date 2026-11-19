@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { getRecipes } from "../api/recipeService";
 import RecipeCard from "../components/RecipeCard";
 
@@ -37,9 +38,9 @@ export default function Home() {
         <div className="columns is-multiline">
           {recipes.map((recipe) => (
             <div className="column is-12-mobile is-6-tablet is-4-desktop" key={recipe.id}>
-              {/* <NavLink to="{ @`/${recipe.}`}" end> */}
+              <Link to={`/recipe/${recipe._id}`} className="is-block">
                 <RecipeCard recipe={recipe} />
-              {/* </NavLink> */}
+              </Link>
             </div>
           ))}
         </div>

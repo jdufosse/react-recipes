@@ -14,6 +14,11 @@ export default function Layout() {
                 Accueil
               </NavLink>
             </li>
+            <li>
+              <NavLink to="/recipe/create" end>
+                Créer une recette
+              </NavLink>
+            </li>
           </ul>
         </nav>
       </aside>

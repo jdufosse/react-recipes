@@ -21,3 +21,17 @@ export async function getRecipeById(id) {
 
   return response.json();
 }
+
+export async function createRecipe(recipe) {
+  const response = await fetch(`${API_URL}/recipe`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(recipe),
+  });
+
+  if (!response.ok) {
+    throw new Error("Impossible de créer la recette.");
+  }
+
+  return response.json();
+}
