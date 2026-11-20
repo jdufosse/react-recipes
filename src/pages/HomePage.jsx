@@ -10,8 +10,11 @@ export default function Home() {
 
   useEffect(() => {
     getRecipes()
-      .then(setRecipes)
-      .catch((err) => setError(err.message))
+    .then(setRecipes)
+      .catch((err) => {
+        console.error("Échec du chargement :", err);
+        setError(err.message);
+      })
       .finally(() => setLoading(false));
   }, []);
 
