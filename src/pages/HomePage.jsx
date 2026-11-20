@@ -13,7 +13,7 @@ export default function Home() {
     .then(setRecipes)
       .catch((err) => {
         console.error("Échec du chargement :", err);
-        setError(err.message);
+        setError(`${err.name}: ${err.message}`);
       })
       .finally(() => setLoading(false));
   }, []);
