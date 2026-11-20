@@ -126,6 +126,11 @@ body,
   background-color: #243b35;
 }
 
+.sidebar h1 {
+  color: white;
+  margin-bottom: 2rem;
+}
+
 .sidebar .menu-label {
   color: #b5c9c0;
 }
