@@ -131,7 +131,7 @@ body,
 }
 
 .sidebar .menu-list a {
-  color: white;
+  color: black;
 }
 
 .sidebar .menu-list a:hover,
@@ -142,4 +142,29 @@ body,
 
 .main-content {
   background-color: #f7f8f6;
+}
+
+/* Sombre si la machine le préfère */
+@media (prefers-color-scheme: dark) {
+  .sidebar {
+    background-color: #243b35;
+  }
+
+  .sidebar .menu-label {
+    color: #b5c9c0;
+  }
+
+  .sidebar .menu-list a {
+    color: white;
+  }
+
+  .sidebar .menu-list a:hover,
+  .sidebar .menu-list a.is-active {
+    color: #243b35;
+    background-color: #d5eee2;
+  }
+
+  .main-content {
+    background-color: #f7f8f6;
+  }
 }
